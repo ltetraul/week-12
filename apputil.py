@@ -37,4 +37,5 @@ def show_game(game_board, n_steps=10, pause=0.5):
         plt.show()
 
         # wait for the next step
-        time.sleep(pause)
+        if step + 1 < n_steps:
+            time.sleep(pause)

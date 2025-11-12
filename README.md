@@ -19,14 +19,22 @@ Note: **The *prophet-diagnostics.ipynb* lab is completely optional.** Take a loo
 The environment for this week is built with the following environment.yml:
 
 ```yml
-name: coding-exercise
+name: h501-week-12
 dependencies:
   - python=3.11
   - pip
   - pip:
+    - ipykernel  # for Jupyter Notebook
+    - ipywidgets
     - streamlit
+    - prophet
+    - plotly
+    - nbformat
+    - seaborn
     - pandas
     - numpy
+    - scipy
+    - statsmodels
 ```
 
 *Note: you are welcome to install more packages in your codespace, but they will not be used by the autograder.*

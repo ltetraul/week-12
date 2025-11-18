@@ -6,10 +6,30 @@ import matplotlib.pyplot as plt
 
 
 def update_board(current_board):
-    # your code here ...
+    """
+    Perform one update step of Conway's Game of Life.   
+    """
+
     updated_board = current_board
 
+    #compute neighbors
+    padded = np.pad(current_board, pad_width=1, mode='constant', constant_values=0)
+
+    #count neighbors
+    neighbors = (
+        padded[:-2, :-2] + padded[:-2, 1:-1] + padded[:-2, 2:] +
+        padded[1:-1, :-2] +                     padded[1:-1, 2:] +
+        padded[2:,  :-2] + padded[2:,  1:-1] + padded[2:,  2:]
+    )
+
+    #complete next step in a temp array
+    next_state = ((neighbors == 3) | ((current_board == 1) & (neighbors == 2))).astype(int)
+
+    #copy values into the array
+    updated_board[:] = next_state
+
     return updated_board
+
 
 
 def show_game(game_board, n_steps=10, pause=0.5):
